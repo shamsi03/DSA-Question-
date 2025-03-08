@@ -1,15 +1,13 @@
 class Solution {
     public String[] sortPeople(String[] names, int[] heights) {
-        String[] hash = new String[100001];
-        for(int i =0;i<heights.length;i++)
-            hash[heights[i]] = names[i];
+        Map<Integer,String>m = new TreeMap<>(Collections.reverseOrder());
+        for(int i=0;i<heights.length;i++)
+            m.put(heights[i],names[i]);
 
-        int replaceIndex=0;
-        for(int i=hash.length-1;i>=0;i--)
-        {
-            if(hash[i]!=null)
-                names[replaceIndex++] = hash[i];
-        }
+        int replaceIndex = 0;
+        for(int it:m.keySet())
+            names[replaceIndex++] = m.get(it);
+
 
         return names;
     }
