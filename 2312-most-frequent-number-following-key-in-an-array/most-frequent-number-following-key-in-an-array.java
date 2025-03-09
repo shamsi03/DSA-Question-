@@ -1,26 +1,19 @@
 class Solution {
     public int mostFrequent(int[] nums, int key) {
-        int size = 0;
-        for(int it:nums)
-        {
-            if(size<it)
-                size = it;
-        }
-
-        int hash[] = new int[size+1];
+        HashMap<Integer,Integer>m = new HashMap<>();
         for(int i=0;i<nums.length-1;i++)
         {
             if(nums[i]==key)
-                hash[nums[i+1]]++;
+                m.put(nums[i+1],m.getOrDefault(nums[i+1],0)+1);
         }
 
-        int ans=-1,maxFreq=0;
-        for(int i=0;i<hash.length;i++)
+        int ans = -1, maxFreq=0;
+        for(int k:m.keySet())
         {
-            if(hash[i] > maxFreq)
+            if(m.get(k)>maxFreq)
             {
-                ans = i;
-                maxFreq = hash[i];
+                ans = k;
+                maxFreq = m.get(k);
             }
         }
 
