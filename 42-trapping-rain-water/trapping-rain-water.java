@@ -5,11 +5,11 @@ class Solution {
         int rightSupport[] = new int[size];
 
         int leftMax=0,rightMax=0;
-        for(int i=0;i<size;i++){
-            leftSupport[i] = leftMax;
-            if(leftMax < height[i])
-                leftMax = height[i];
-        }
+        // for(int i=0;i<size;i++){
+        //     leftSupport[i] = leftMax;
+        //     if(leftMax < height[i])
+        //         leftMax = height[i];
+        // }
 
         for(int i=size-1;i>=0;i--){
             rightSupport[i] = rightMax;
@@ -20,7 +20,9 @@ class Solution {
         int trapWater = 0,minSupport=0;
         for(int i=0;i<size;i++)
         {
-            minSupport = Math.min(leftSupport[i],rightSupport[i]);
+            minSupport = Math.min(leftMax,rightSupport[i]);
+            if(leftMax < height[i])
+                leftMax = height[i];
 
             if(minSupport-height[i] > 0 )
                 trapWater += minSupport-height[i];
