@@ -1,7 +1,7 @@
 class Solution {
     public int trap(int[] height) {
         int size = height.length;
-        int leftSupport[] = new int[size];
+        //int leftSupport[] = new int[size];
         int rightSupport[] = new int[size];
 
         int leftMax=0,rightMax=0;
