@@ -1,39 +1,15 @@
 class Solution {
-    void reverse(int[] arr,int start,int end)
-    {
-        while(start<end)
-        {
-            int temp = arr[start];
-            arr[start] = arr[end];
-            arr[end] = temp;
-            start++;
-            end--;
-        }
-    }
     public boolean check(int[] nums) {
-        int countK = 1,start=0;
-        while(start<nums.length-1)
+        int count=0;
+        for(int i=1;i<nums.length;i++)
         {
-            if(nums[start]>nums[start+1])
-                break;
-            countK++;
-            start++;
+            if(nums[i-1]>nums[i])
+                count++;
         }
 
-        reverse(nums,0,countK-1);
-        reverse(nums,countK,nums.length-1);
-        reverse(nums,0,nums.length-1);
-
-        start = 0;
-        while(start<nums.length-1)
-        {
-            if(nums[start]>nums[start+1])
-                return false;
-
-            start++;
-        }
-
-
-        return true;
+        if( (count>1) || (count==1 && nums[0]< nums[nums.length-1]) )
+            return false;
+        else
+            return true;
     }
 }
