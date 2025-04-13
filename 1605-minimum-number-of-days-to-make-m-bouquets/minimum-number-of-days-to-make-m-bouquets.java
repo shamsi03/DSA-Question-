@@ -27,8 +27,11 @@ class Solution {
             {
                 if(it == 0){
                     count++;
-                    if(count>=k) {a++;count=0;}
+                    if(count==k) {
+                        a++;
+                        count=0;
                     }
+                }
                 else 
                     count = 0;
             
