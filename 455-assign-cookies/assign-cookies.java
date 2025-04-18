@@ -13,10 +13,8 @@ class Solution {
                 indx2--;
                 count++;
             }
-            else if(s[indx2]<g[indx1])
-                indx1--;
             else
-                indx2--;
+                indx1--;
         }
 
         return count;
