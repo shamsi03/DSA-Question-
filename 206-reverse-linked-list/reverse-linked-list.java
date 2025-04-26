@@ -23,7 +23,9 @@ class Solution {
             
         }
 
-        head = prev;
-        return head;
+        // head = prev;
+        // return head;
+
+        return prev;
     }
 }
