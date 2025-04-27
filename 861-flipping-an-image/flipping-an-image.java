@@ -19,7 +19,7 @@ class Solution {
     {
         for(int i=0;i<image.length;i++)
         {
-            int start = 0,end = image[i].length-1;
+            int start = 0,end = image[0].length-1;
             while(start<end)
             {
                 int temp = image[i][start];
