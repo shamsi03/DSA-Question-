@@ -5,7 +5,7 @@ class Solution {
         {
             int mid = end - (end-start)/2;
             if(nums[mid]==target) return true;
-            else if(nums[mid]>nums[start]) //left side sorted
+            else if(nums[mid]>nums[0]) //left side sorted
             {
                 if(nums[mid]>target && target>=nums[start])
                     end = mid-1;
