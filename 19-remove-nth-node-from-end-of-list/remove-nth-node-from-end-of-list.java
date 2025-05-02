@@ -18,7 +18,8 @@ class Solution {
             count++;
         }
         count = count-n;
-        if(count==0) {head=head.next;return head;}
+        if(count==0)
+            return head.next;
         int index = 1;
         temp = head;
         while(index<count)
@@ -26,7 +27,7 @@ class Solution {
             temp = temp.next;
             index++;
         }
-         temp.next = temp.next.next;
+        temp.next = temp.next.next;
          
         return head;
     }
