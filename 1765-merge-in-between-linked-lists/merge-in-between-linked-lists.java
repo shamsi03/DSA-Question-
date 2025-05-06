@@ -10,35 +10,25 @@
  */
 class Solution {
     public ListNode mergeInBetween(ListNode list1, int a, int b, ListNode list2) {
-        for(int i=b;i>=a;i--)
-            deleteNode(list1,i);
-
-        ListNode temp = list2;
-        while(temp.next!=null)
-        {
-            temp = temp.next;
+        ListNode prevA = list1;
+        for (int i = 0; i < a - 1; i++) {
+            prevA = prevA.next;
         }
 
-        ListNode temp1 = list1;
-        while(a>1)
-        {
-            temp1 = temp1.next;
-            a--;
+        ListNode afterB = prevA;
+        for (int i = 0; i < (b - a + 2); i++) {
+            afterB = afterB.next;
         }
 
-        temp.next = temp1.next;
-        temp1.next = list2;
+        prevA.next = list2;
+
+        ListNode tail = list2;
+        while (tail.next != null) {
+            tail = tail.next;
+        }
+
+        tail.next = afterB;
+
         return list1;
-    }
-
-    public void deleteNode(ListNode head,int index)
-    {
-        ListNode temp = head;
-        while(index>1)
-        {
-            temp = temp.next;
-            index--;
-        }
-        temp.next = temp.next.next;
     }
 }
