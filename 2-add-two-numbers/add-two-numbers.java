@@ -11,7 +11,9 @@
 class Solution {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         int carry = 0;
-        ListNode temp=new ListNode();
+        //dummy node 
+        ListNode temp=new ListNode(0);
+        //for the calculation
         ListNode curr=temp;
         while(l1!=null && l2!=null)
         {
@@ -29,7 +31,8 @@ class Solution {
             curr=curr.next;
             carry=sum/10; 
             l1 = l1.next;
-        } while(l2!=null)
+        } 
+        while(l2!=null)
         {
             int sum = l2.val+carry;
             curr.next=new ListNode(sum%10);
@@ -37,7 +40,11 @@ class Solution {
             carry=sum/10; 
             l2 = l2.next;
         }
-        if(carry>0)  curr.next=new ListNode(carry);
+        //mtlb last wale carry wale me kuch bach jaye tb
+        if(carry>0)  
+            curr.next=new ListNode(carry);
+
+        //refernce return kar diya second node ka , q ki first node to dummy hai uska use nahi kar rhe hai humlog
         return temp.next;
     }
 }
