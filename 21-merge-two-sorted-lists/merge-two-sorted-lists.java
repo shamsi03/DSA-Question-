@@ -13,24 +13,30 @@ class Solution {
         ListNode dummy = new ListNode(-1);
         ListNode traverse = dummy;
 
-        while(list1!=null && list2!=null)
+        while(list1!=null || list2!=null)
         {
-            if(list1.val<list2.val)
-            {
-                traverse.next = list1;
-                traverse = traverse.next;
-                list1 = list1.next;
+            if(list1!=null&&list2!=null){
+                if(list1.val<list2.val)
+                {
+                    traverse.next = list1;
+                    traverse = traverse.next;
+                    list1 = list1.next;
+                }
+                else{
+                    traverse.next = list2;
+                    list2 = list2.next;
+                    traverse = traverse.next;
+                }
             }
-            else{
-                traverse.next = list2;
-                list2 = list2.next;
-                traverse = traverse.next;
-            }
+            else {
+                 if(list1!=null)
+                    traverse.next = list1;
+                if(list2!=null)
+                    traverse.next = list2;
+                break;
+                }
         }
-        if(list1!=null)
-            traverse.next = list1;
-        if(list2!=null)
-            traverse.next = list2;
+       
 
         return dummy.next;
     }
