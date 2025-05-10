@@ -10,24 +10,29 @@
  */
 class Solution {
     public ListNode rotateRight(ListNode head, int k) {
-
-        int length = findLength(head);
-        ListNode last = head;
         if(head==null) return null;
         else if(head.next==null || k==0) return head;
-
+        int length = findLength(head);
         k = k%length;
-        for(int i=1;i<=k;i++)
+        ListNode last = head;
+        while(last.next!=null)
         {
-            last = head;
-            while(last.next.next!=null)
-            {
-                last = last.next;
-            }
-            last.next.next = head;
-            head = last.next;
-            last.next = null;
+            last = last.next;
         }
+        last.next = head;
+
+        //now find the k'th element which is the first element after the rotation
+        last = head;
+        int index = 1;
+        length = length-k;
+        while(index<length)
+        {
+            last = last.next;
+            index++;
+        }
+        head = last.next;
+        last.next = null;
+
 
         return head;
     }
@@ -39,7 +44,6 @@ class Solution {
             count++;
             head = head.next;
         }
-
         return count;
     }
 }
