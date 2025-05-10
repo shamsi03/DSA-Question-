@@ -27,18 +27,11 @@ class Solution {
                 traverse = traverse.next;
             }
         }
-        while(list1!=null)
-        {
+        if(list1!=null)
             traverse.next = list1;
-            traverse = traverse.next;
-            list1 = list1.next;
-        }
-        while(list2!=null)
-        {
+        if(list2!=null)
             traverse.next = list2;
-            list2 = list2.next;
-            traverse = traverse.next;
-        }
+
         return dummy.next;
     }
 }
