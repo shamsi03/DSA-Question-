@@ -19,9 +19,13 @@ class Solution {
             fast = fast.next;
             index++;
         }
-        ListNode slow = head;
+
+        //mtlb first element ko delete karne k liye ye condition kaam aayegi
         if(fast.next==null)
             return head.next;
+
+        //fast and slow k bich me difference 'n' ke equal hi hoga 
+        ListNode slow = head;
         while(fast.next.next!=null)
         {
             slow = slow.next;
