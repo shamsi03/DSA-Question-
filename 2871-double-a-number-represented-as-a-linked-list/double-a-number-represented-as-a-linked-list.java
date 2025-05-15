@@ -10,24 +10,26 @@
  */
 class Solution {
     public ListNode doubleIt(ListNode head) {
-        Stack<Integer>s = new Stack<>();
-        ListNode temp = head;
-        while(temp!=null)
-        {
-            s.push(temp.val);
-            temp = temp.next;
-        }
+        // Stack<Integer>s = new Stack<>();
+        // ListNode temp = head;
+        // while(temp!=null)
+        // {
+        //     s.push(temp.val);
+        //     temp = temp.next;
+        // }
+
+        ListNode temp = reverse(head);
 
         ListNode dummy = new ListNode(-1);
         ListNode trav = dummy;
 
         int carry=0,mult=1;
-        while(!s.isEmpty())
+        while(temp!=null)
         {
-            mult = s.peek()*2+carry;
+            mult = temp.val*2+carry;
             trav.next = new ListNode(mult%10);
             carry = mult/10;
-            s.pop();
+            temp = temp.next;
             trav = trav.next;
         }
         if(carry>0)
