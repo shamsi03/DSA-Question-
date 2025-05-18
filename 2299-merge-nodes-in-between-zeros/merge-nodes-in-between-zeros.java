@@ -10,25 +10,28 @@
  */
 class Solution {
     public ListNode mergeNodes(ListNode head) {
-        ListNode temp = new ListNode(0);
-        ListNode copy = temp;
+        ListNode dummy = new ListNode(-1);
+        ListNode trav = dummy;
         int sum = 0;
-        ListNode merge = head.next;
-        while(merge!=null)
+
+        //because first always zero 
+        ListNode temp = head.next;
+
+        //because last node also be zero
+        while(temp!=null)
         {
-            if(merge.val==0)
+            if(temp.val==0)
             {
-                copy.next = new ListNode(sum);
+                trav.next = new ListNode(sum);
                 sum = 0;
-                copy = copy.next;
-                merge = merge.next;
+                trav = trav.next;
             }
-            else{
-                sum += merge.val;
-                merge = merge.next;
-            }
+            else
+                sum += temp.val;
+
+            temp = temp.next;
         }
 
-        return temp.next;
+        return dummy.next;
     }
 }
