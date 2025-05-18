@@ -10,40 +10,24 @@
  */
 class Solution {
     public ListNode doubleIt(ListNode head) {
-        // Stack<Integer>s = new Stack<>();
-        // ListNode temp = head;
-        // while(temp!=null)
-        // {
-        //     s.push(temp.val);
-        //     temp = temp.next;
-        // }
-
-        ListNode temp = reverse(head);
-
+        ListNode revHead = reverse(head);
         ListNode dummy = new ListNode(-1);
         ListNode trav = dummy;
-
-        int carry=0,mult=1;
-        while(temp!=null)
+        int carry = 0;
+        while(revHead!=null)
         {
-            mult = temp.val*2+carry;
-            trav.next = new ListNode(mult%10);
-            carry = mult/10;
-            temp = temp.next;
+            int getDouble = revHead.val*2 + carry;
+            trav.next = new ListNode(getDouble%10);
+            carry = getDouble/10;
             trav = trav.next;
+            revHead = revHead.next;
         }
         if(carry>0)
-        {
             trav.next = new ListNode(carry);
-            trav = trav.next;
-        }
-
 
         return reverse(dummy.next);
     }
-
-    ListNode reverse(ListNode head)
-    {
+    public ListNode reverse(ListNode head){
         ListNode prev=null,curr=head,nxt=null;
         while(curr!=null)
         {
@@ -52,7 +36,6 @@ class Solution {
             prev = curr;
             curr = nxt;
         }
-
         return prev;
     }
 }
