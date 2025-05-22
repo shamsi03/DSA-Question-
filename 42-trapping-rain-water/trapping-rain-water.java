@@ -6,7 +6,7 @@ class Solution {
         for(int i=0;i<n;i++){
             left[i]=mx;
             if(height[i]>mx)
-            mx=height[i];
+                mx=height[i];
         }
         int right[] = new int[n];
         mx=0;
