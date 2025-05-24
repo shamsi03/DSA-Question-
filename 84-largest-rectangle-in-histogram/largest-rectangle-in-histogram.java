@@ -4,35 +4,35 @@ class Solution {
         int minFromRight[] = new int[heights.length];
 
         // finding next minimum for every heights from their left
-        Stack<Integer>left = new Stack<>();
+        Stack<Integer>st = new Stack<>();
         for(int i=0;i<heights.length;i++)
         {
-            while(!left.isEmpty() && heights[left.peek()] >= heights[i])
+            while(!st.isEmpty() && heights[st.peek()] >= heights[i])
             {
-                left.pop();
+                st.pop();
             }
-            if(left.isEmpty())
+            if(st.isEmpty())
                 minFromLeft[i] = -1;
             else
-                minFromLeft[i] = left.peek();
+                minFromLeft[i] = st.peek();
 
-            left.push(i);
+            st.push(i);
         }
 
         //finding next minimum for every heights from their right
-        Stack<Integer>right = new Stack<>();
+        st = new Stack<>();
         for(int i=heights.length-1;i>=0;i--)
         {
-            while(!right.isEmpty() && heights[right.peek()] >= heights[i])
+            while(!st.isEmpty() && heights[st.peek()] >= heights[i])
             {
-                right.pop();
+                st.pop();
             }
-            if(right.isEmpty())
+            if(st.isEmpty())
                 minFromRight[i] = heights.length;
             else
-                minFromRight[i] = right.peek();
+                minFromRight[i] = st.peek();
 
-            right.push(i);
+            st.push(i);
         }
 
         //finding the current area width : j-i-1 = minFromRight[i]-minFromLeft[i]-1
