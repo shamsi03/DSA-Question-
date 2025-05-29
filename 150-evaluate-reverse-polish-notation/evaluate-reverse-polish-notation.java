@@ -5,16 +5,16 @@ class Solution {
         {
             if(tokens[i].equals("+") || tokens[i].equals("-") || tokens[i].equals("*") || tokens[i].equals("/"))
             {
-                int num1 = st.pop();
                 int num2 = st.pop();
+                int num1 = st.pop();
                 if(tokens[i].equals("+"))
                     st.push(num1+num2);
                 else if(tokens[i].equals("-"))
-                    st.push(num2-num1);
+                    st.push(num1-num2);
                 else if(tokens[i].equals("*"))
                     st.push(num1*num2);
                 else if(tokens[i].equals("/"))
-                    st.push(num2/num1);
+                    st.push(num1/num2);
             }
             else
                 st.push(Integer.parseInt(tokens[i]));
