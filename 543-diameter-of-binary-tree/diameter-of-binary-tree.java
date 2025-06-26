@@ -22,8 +22,11 @@ class Solution {
         int leftHeight = height(root.left);
         int rightDiam = diameterOfBinaryTree(root.right);
         int rightHeight = height(root.right);
+        //bhai yahan pe diameter means uska path calculate karna na ki number of nodes , ye wali line number of nodes find karne k liye valid diameter ki 
+       // int selfDiam = leftHeight + rightHeight + 1;
 
-        int selfDiam = leftHeight + rightHeight ;
+       //calculated diameter only
+       int selfDiam = leftHeight + rightHeight ;
 
         return Math.max(selfDiam,Math.max(leftDiam,rightDiam));
     }
