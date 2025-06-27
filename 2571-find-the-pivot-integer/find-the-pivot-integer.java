@@ -5,10 +5,8 @@ class Solution {
         for(int i=1;i<=n;i++)
         {
             prefixSum += i;
-            if(prefixSum==suffixSum)
+            if(prefixSum == suffixSum-prefixSum+i)
                 return i;
-
-            suffixSum -= i;
         }
 
         return -1;
