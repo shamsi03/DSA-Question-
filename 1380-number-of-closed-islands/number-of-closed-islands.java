@@ -19,11 +19,14 @@ class Solution {
 
     boolean dfs(int[][]grid,int row,int col,int n,int m)
     {
+        //n is for row and m is for column , simply ye isliye hai ki hum check karte ja rhe hai ki ye out of bound ja rha hai ya nahi .
         if(row>=n || col>=m || row<0 || col<0)
             return false;
         if(grid[row][col]==1)
             return true;
-            grid[row][col] = 1;
+
+        // mark kar do 1 se ki mai us ko visit kar chuka hu 
+        grid[row][col] = 1;
 
         boolean left =  dfs(grid,row,col-1,n,m); 
         boolean right = dfs(grid,row,col+1,n,m); 
