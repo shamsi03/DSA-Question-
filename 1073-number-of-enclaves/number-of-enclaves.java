@@ -15,6 +15,8 @@ class Solution {
                 }
             }
         }
+
+        //jitne 1 bach jayenge wahi land cell aayega , wo boundary se connected honge hi nahi 
         int length = 0;
         for(int i=0;i<n;i++)
         {
@@ -30,22 +32,28 @@ class Solution {
         return length;
     }
 
-    boolean dfs(int[][]grid,int row,int col,int n,int m)
+    void dfs(int[][]grid,int row,int col,int n,int m)
     {
         if(row>=n || col>=m || row<0 || col<0){
-            return false;
+            return;
         }
 
         if(grid[row][col]==0)
-            return true;
+            return;
 
+        //boundary se jitna connected hoga un sb ko 0 mark kar do 
         grid[row][col] = 0;
 
-        boolean left = dfs(grid,row,col-1,n,m);
-        boolean right = dfs(grid,row,col+1,n,m);
-        boolean top = dfs(grid,row-1,col,n,m);
-        boolean bottom = dfs(grid,row+1,col,n,m);
+        // boolean left = dfs(grid,row,col-1,n,m);
+        // boolean right = dfs(grid,row,col+1,n,m);
+        // boolean top = dfs(grid,row-1,col,n,m);
+        // boolean bottom = dfs(grid,row+1,col,n,m);
 
-        return left && right && top && bottom;
+        // return left && right && top && bottom;
+
+        dfs(grid,row,col-1,n,m);
+        dfs(grid,row,col+1,n,m);
+        dfs(grid,row-1,col,n,m);
+        dfs(grid,row+1,col,n,m);
     }
 }
