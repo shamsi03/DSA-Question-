@@ -13,7 +13,7 @@ class Solution {
 
         //finding the actual trap water
         int trapWater = 0;
-        for(int i=1;i<height.length-1;i++)
+        for(int i=0;i<height.length;i++)
         {
             int minSupport = Math.min(leftMax[i],rightMax[i]);
             if(minSupport-height[i]>0)
