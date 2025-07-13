@@ -3,18 +3,18 @@ class Solution {
         Arrays.sort(players);
         Arrays.sort(trainers);
 
-        int start=0,maxMatchingPlyer = 0;
+        int idxPlayer=0, idxTrainer=0 , maxMatchingPlyer = 0;
 
-        for(int i=0;i<trainers.length;i++)
+        while(idxPlayer<players.length && idxTrainer<trainers.length)
         {
-            
-            if( (start<players.length) && (players[start]<=trainers[i]) )
-            {
+            if(players[idxPlayer] <= trainers[idxTrainer]){
+                idxPlayer++;
+                idxTrainer++;
                 maxMatchingPlyer++;
-                start++;
             }
+            else
+                idxTrainer++;
         }
-
 
         return maxMatchingPlyer;
     }
