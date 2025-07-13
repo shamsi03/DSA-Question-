@@ -2,21 +2,22 @@ class Solution {
     public int findContentChildren(int[] g, int[] s) {
         Arrays.sort(g);
         Arrays.sort(s);
-        int indx1 = g.length-1;
-        int indx2 = s.length-1;
-        int count = 0;
-        while(indx1>=0 && indx2>=0)
+
+        int startGreed = 0 , startSize = 0;
+
+        int maxNum = 0;
+        while(startGreed<g.length && startSize<s.length)
         {
-            if(s[indx2]>=g[indx1])
+            if(g[startGreed] <= s[startSize])
             {
-                indx1--;
-                indx2--;
-                count++;
+                startGreed++;
+                startSize++;
+                maxNum ++;
             }
             else
-                indx1--;
+                startSize++;
         }
 
-        return count;
+        return maxNum;
     }
 }
