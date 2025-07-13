@@ -7,13 +7,11 @@ class Solution {
 
         for(int i=0;i<trainers.length;i++)
         {
-            if(start<players.length)
+            
+            if( (start<players.length) && (players[start]<=trainers[i]) )
             {
-                if(players[start]<=trainers[i])
-                {
-                    maxMatchingPlyer++;
-                    start++;
-                }
+                maxMatchingPlyer++;
+                start++;
             }
         }
 
