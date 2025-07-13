@@ -1,22 +1,23 @@
 class Solution {
     public int numSubarrayProductLessThanK(int[] nums, int k) {
-        int totalSubarr = 0, l = 0,r = 0;
-        double prod = 1;
+        if(k<=1) return 0;
+
+        int l=0,r=0,totalSubarr=0,prod=1;
         while(r<nums.length)
         {
             prod *= nums[r];
-            while(l<nums.length && prod>=k)
+            while(l<=r && prod>=k)
             {
-                prod = Math.ceil((prod/nums[l]));
+                prod /= nums[l];
                 l++;
             }
-            if(prod<k){
+
+            if(prod<k)
                 totalSubarr += (r-l+1);
-            }
 
             r++;
         }
-        //System.out.println(1/2);
+
         return totalSubarr;
     }
 }
