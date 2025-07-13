@@ -3,19 +3,19 @@ class Solution {
         Arrays.sort(g);
         Arrays.sort(s);
 
-        int startGreed = 0 , startSize = 0;
+        int idxGreed = 0 , idxSize = 0;
 
         int maxNum = 0;
-        while(startGreed<g.length && startSize<s.length)
+        while(idxGreed<g.length && idxSize<s.length)
         {
-            if(g[startGreed] <= s[startSize])
+            if(g[idxGreed] <= s[idxSize])
             {
-                startGreed++;
-                startSize++;
+                idxGreed++;
+                idxSize++;
                 maxNum ++;
             }
-            else
-                startSize++;
+            else // yahan pe uski greed ko puri nahi kar pa rha hai isliye uski size increase kar ke same greed k sath check kiya , isliye size array ke index ko badha kar ke check kar rhe hai hum sirf.
+                idxSize++;
         }
 
         return maxNum;
