@@ -13,7 +13,14 @@ class Solution {
             }
         }
 
-        return li.stream().mapToInt(i -> i).toArray();
+        // return li.stream().mapToInt(i -> i).toArray();
+
+        int ans[] = new int[li.size()];
+        int i = 0;
+        for(int it:li)
+            ans[i++] = it;
+
+        return ans;
 
     }
 }
