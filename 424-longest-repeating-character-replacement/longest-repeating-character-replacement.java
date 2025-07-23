@@ -8,10 +8,14 @@ class Solution {
             hash[ch-'A']++;
             maxFreq = Math.max(maxFreq,hash[ch-'A']);
 
-            if((right-left+1)-maxFreq > k)
+            while((right-left+1)-maxFreq > k)
             {
                 char ch1 = s.charAt(left);
                 hash[ch1-'A']--;
+                maxFreq = 0;
+                for(int it:hash)
+                    maxFreq = Math.max(maxFreq,it);
+
                 left++;
             }
 
