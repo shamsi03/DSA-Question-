@@ -4,18 +4,20 @@ class Solution {
         while(right<nums.length)
         {
             if(nums[right]==0) countZero++;
-
-            while(countZero > k)
+            
+            //ek baar shrink
+            if(countZero > k)
             {
                 if(nums[left]==0)
                     countZero--;
 
                 left++;
             }
-
+            // and check valid subarray or not 
             if(countZero<=k)
                 maxOnes = Math.max(maxOnes,right-left+1);
 
+            //expand again -> window ko samjh ek baar ke baad fix kar liya , fix window ke beyond aapne window ko shrink nahi karunga 
             right++;
         }
 
