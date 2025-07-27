@@ -10,16 +10,23 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        //Rabbit tortose algo
-        ListNode rabbit = head;
-        ListNode tortose = head;
-
-        while(rabbit!=null && rabbit.next!=null)
+        if(head.next==null) return head;
+        int count = 0;
+        ListNode temp = head;
+        while(temp!=null)
         {
-            rabbit = rabbit.next.next;
-            tortose = tortose.next;
+            count++;
+            temp = temp.next;
+        }
+        int index = 0;
+        System.out.println(count);
+        temp = head;
+        while(index<count/2)
+        {
+            temp = temp.next;
+            index++;
         }
 
-        return tortose;
+        return temp;
     }
 }
