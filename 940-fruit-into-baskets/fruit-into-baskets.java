@@ -7,7 +7,7 @@ class Solution {
         {
             map.put(fruits[right],map.getOrDefault(fruits[right],0)+1);
 
-            while(map.size()>2)
+            if(map.size()>2)
             {
                 map.put(fruits[left],map.get(fruits[left])-1);
 
