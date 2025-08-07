@@ -1,41 +1,53 @@
 class Solution {
     public int[] searchRange(int[] nums, int target) {
-        int ans[] = {-1,-1};
-        int start=0,end=nums.length-1;
-        while(start<=end)
+
+        if(nums.length == 0)
+            return new int[] {-1,-1};
+
+        int lb = findLowerBound(nums,target);
+
+        if(lb == nums.length || nums[lb] != target )
+            return new int[] {-1,-1};
+
+        int ub = findUpperBound(nums,target);
+        return new int[] {lb,ub-1};
+    }
+
+    int findLowerBound(int nums[],int target)
+    {
+        int low = 0, high = nums.length-1, idx = nums.length;
+        while(low <= high)
         {
-            int mid = end - (end-start)/2;
-            if(nums[mid]==target)
+            int mid = (low+high)/2;
+
+            if(nums[mid] >= target)
             {
-                ans[0] = mid;
-                end = mid-1;
+                idx = mid;
+                high = mid-1; //look for the smallest so move on the left side
             }
-            else if(nums[mid]>target)
-                end = mid-1;
             else
-                start = mid+1;
+                low = mid+1; //look to the right side
         }
 
-        start = 0;
-        end = nums.length-1;
+        return idx;
+    }
 
-        while(start<=end)
+    int findUpperBound(int nums[],int target)
+    {
+        int low = 0, high = nums.length-1, idx = nums.length;
+        while(low <= high)
         {
-            int mid = end - (end-start)/2;
+            int mid = low + (high - low)/2;
 
-            if(nums[mid]==target)
+            if(nums[mid] > target)
             {
-                ans[1] = mid;
-                start = mid+1;
+                idx = mid;
+                high = mid-1; //look for the smallest so move on the left side
             }
-            else if(nums[mid]<target)
-                start = mid+1;
             else
-                end = mid-1;
+                low = mid+1; //look to the right side
         }
-        
 
-
-        return ans;
+        return idx;
     }
 }
