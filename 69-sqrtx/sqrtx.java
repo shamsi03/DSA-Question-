@@ -1,19 +1,19 @@
 class Solution {
     public int mySqrt(int x) {
         
-        //Brute force approach
+        //Optimal Approach
 
-        int ans = 0;
-        for(long i=1;i<=x;i++)
+        int low = 1,high=x;
+        while(low <= high)
         {
-            if(i*i <= x)
-            {
-                ans = (int) i;
-            }
+            long mid = low + (high-low)/2;
+
+            if(mid*mid <= x)
+                low = (int)mid+1;
             else
-                break;
+                high = (int)mid-1;
         }
 
-        return ans;
+        return high;
     }
 }
