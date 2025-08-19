@@ -1,15 +1,23 @@
 class Solution {
     public boolean isPerfectSquare(int num) {
         
-        boolean ans = false;
-        for(long i=1;i<=num;i++)
+        //Optimal Approach -> apply binary search on answer space
+
+        int low = 1 , high = num;
+
+        while(low <= high)
         {
-            if(i*i == num)
-                ans = true;
-            else if(i*i > num)
-                break;
+            int mid = low + (high-low)/2;
+
+            // long check = mid * mid;
+
+            if(((long) mid*mid) == num) return true;
+            else if(((long) mid*mid) < num) 
+                low = mid+1;
+            else
+                high = mid-1;
         }
 
-        return ans;
+        return false;
     }
 }
