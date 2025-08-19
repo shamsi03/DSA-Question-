@@ -6,12 +6,12 @@ class Solution {
         int low = 1,high=x;
         while(low <= high)
         {
-            long mid = low + (high-low)/2;
+            int mid = low + (high-low)/2;
 
-            if(mid*mid <= x)
-                low = (int)mid+1;
+            if(((long)mid*mid) <= x)
+                low = mid+1;
             else
-                high = (int)mid-1;
+                high = mid-1;
         }
 
         return high;
