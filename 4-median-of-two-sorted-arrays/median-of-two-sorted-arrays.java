@@ -1,34 +1,46 @@
 class Solution {
-    public void merged(int[] arr1, int[] arr2, int m, int n , int[] merge)
-        {
-            int i=0,j=0,k=0;
-            while(i<m && j<n)
-            {
-                if(arr1[i] < arr2[j])
-                    merge[k++] = arr1[i++];
-                else
-                    merge[k++] = arr2[j++];
+    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int n1 = nums1.length,n2 = nums2.length;
+        int n = n1+n2;
+        int idx1 = n/2 , idx2 = n/2-1, idxEle1 = 0 , idxEle2 = 0;
+        int i=0,j=0,count=0;
+
+        while(i<n1 && j<n2){
+            if(nums1[i] < nums2[j]){
+                if(count == idx1) idxEle1 = nums1[i];
+                if(count == idx2) idxEle2 = nums1[i];
+
+                count++;
+                i++;
             }
+            else{
+                if(count == idx1) idxEle1 = nums2[j];
+                if(count == idx2) idxEle2 = nums2[j];
 
-            while(i<m)
-                merge[k++] = arr1[i++];
-
-            while(j<n)
-                merge[k++] = arr2[j++];
+                count++;
+                j++;
+            }
         }
 
-    public double findMedianSortedArrays(int[] nums1, int[] nums2) {
-        int m = nums1.length, n = nums2.length;
-        int merge[] = new int[m+n];
-        double ans = 0.0;
-        merged(nums1,nums2,m,n,merge);
-        int size = merge.length;
-        if(size%2 == 1)
-            ans = (double) (merge[size/2]);
-        else
-            ans = (double) ((merge[size/2]+merge[(size/2)-1])/2.0);
+        while(i<n1){
+            if(count == idx1) idxEle1 = nums1[i];
+            if(count == idx2) idxEle2 = nums1[i];
+
+            count++;
+            i++;
+        }
+
+        while(j<n2){
+            if(count == idx1) idxEle1 = nums2[j];
+            if(count == idx2) idxEle2 = nums2[j];
+
+            count++;
+            j++;
+        }
+
+        if(n%2 == 1) return (double) (idxEle1);
 
 
-        return ans;
+        return (double) ((idxEle1+idxEle2)/2.0);
     }
 }
