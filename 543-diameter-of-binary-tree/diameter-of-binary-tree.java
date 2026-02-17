@@ -15,30 +15,23 @@
  */
 class Solution {
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null)
-            return 0;
-
-        int leftDiam = diameterOfBinaryTree(root.left);
-        int leftHeight = height(root.left);
-        int rightDiam = diameterOfBinaryTree(root.right);
-        int rightHeight = height(root.right);
-        //bhai yahan pe diameter means uska path calculate karna na ki number of nodes , ye wali line number of nodes find karne k liye valid diameter ki 
-       // int selfDiam = leftHeight + rightHeight + 1;
-
-       //calculated diameter only
-       int selfDiam = leftHeight + rightHeight ;
-
-        return Math.max(selfDiam,Math.max(leftDiam,rightDiam));
+        
+        int diameter[] = new int[1];
+        findHeight(root,diameter);
+        return diameter[0];
     }
 
-    int height(TreeNode root)
-    {
-        if(root==null)
-            return 0;
+    int findHeight(TreeNode root,int[] diameter){
 
-        int leftHeight = height(root.left);
-        int rightHeight = height(root.right);
+        if(root == null) return 0;
 
-        return 1 + Math.max(leftHeight,rightHeight);
+        int lh = findHeight(root.left,diameter);
+        int rh = findHeight(root.right,diameter);
+
+        diameter[0] = Math.max(diameter[0],lh+rh);
+
+        
+
+        return 1+Math.max(lh,rh);
     }
 }
