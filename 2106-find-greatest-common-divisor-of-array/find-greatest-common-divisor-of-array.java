@@ -1,7 +1,21 @@
 class Solution {
     public int findGCD(int[] nums) {
-        Arrays.sort(nums);
-        return GCD(nums[0],nums[nums.length-1]);
+        // Arrays.sort(nums);
+        // return GCD(nums[0],nums[nums.length-1]);
+
+        int min = nums[0];
+        int max = nums[0
+        ];
+
+        for(int it : nums){
+
+            if(it<min)
+                min = it;
+            if(it>max)
+                max = it;
+        }
+
+        return GCD(min,max);
     }
 
     int GCD(int num1,int num2){
