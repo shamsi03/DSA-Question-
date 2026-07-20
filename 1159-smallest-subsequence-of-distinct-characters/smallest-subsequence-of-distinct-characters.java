@@ -15,8 +15,9 @@ class Solution {
 
             map.put(currentChar,map.getOrDefault(currentChar,0)-1);
 
+            if(set.contains(currentChar)) continue;
+            
             while(!st.isEmpty() && currentChar<st.peek() && map.get(st.peek())>0){
-                if(set.contains(currentChar)) break;
                 set.remove(st.peek());
                 st.pop();            
             }
