@@ -8,7 +8,7 @@ class Solution {
                 secondMax = firstMax;
                 firstMax = it;
             }
-            else if(it > secondMax){
+            else if(it > secondMax && secondMax != firstMax){
                 secondMax = it;
             }
         }
